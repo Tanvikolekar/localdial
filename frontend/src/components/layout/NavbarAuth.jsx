@@ -3,8 +3,9 @@ import { Link } from "react-router-dom"; // Import Link for navigation
 import { AiOutlineHome, AiOutlineInfoCircle } from "react-icons/ai"; // Home and About icons
 import { MdOutlineMiscellaneousServices } from "react-icons/md"; // Services icon
 import { FaPlus, FaSearch } from "react-icons/fa"; // Add and Search icons
+import { CgProfile } from "react-icons/cg";
 
-const Navbar = ({ onCategoryChange, onFilter, isLoggedIn }) => {
+const NavbarAuth = ({ onCategoryChange, onFilter, isLoggedIn }) => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -89,21 +90,23 @@ const Navbar = ({ onCategoryChange, onFilter, isLoggedIn }) => {
           >
             <MdOutlineMiscellaneousServices className="mr-1" /> Services
           </Link>
-         
-         {/* Sign Up Button */}
-        <div className="ml-4">
-          <Link
-            to="/register"
-            className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition duration-300 shadow-md no-underline"
+            <Link
+            to="/addform"
+            className="hover:text-orange-200 transition duration-300 no-underline flex items-center"
           >
-            Sign Up
+            <FaPlus className="mr-1" /> Add Services
+            </Link>
+          <Link
+            to="/dashboard"
+            className="hover:text-orange-200 transition duration-300 no-underline flex items-center"
+          >
+            <CgProfile /> Dashboard
           </Link>
-        </div>
-         
         </div>
+
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default NavbarAuth;
