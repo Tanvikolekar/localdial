@@ -8,21 +8,19 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [favoritecolor, setFavoritecolor] = useState("");
+  const [role, setRole] = useState("user"); // Set the default role as "user"
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
-
-
     if (!name || !email || !password || !favoritecolor) {
       setError("All fields are required.");
       return;
     }
 
-    const userData = { name, email, password, favoritecolor };
+    const userData = { name, email, password, favoritecolor, role };
 
     try {
       setLoading(true);
@@ -33,8 +31,6 @@ const Register = () => {
       if (response.success) {
         alert("Registration successful! Please log in.");
         navigate("/login");
-     
-
       } else {
         setError(response.message || "Registration failed.");
       }
@@ -47,9 +43,7 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
-      <div
-        className="p-8 rounded-xl shadow-lg w-full max-w-sm transform transition hover:scale-105 duration-300"
-      >
+      <div className="p-8 rounded-xl shadow-lg w-full max-w-sm transform transition hover:scale-105 duration-300">
         <h2 className="text-2xl font-extrabold mb-6 text-center text-orange-700">
           Create Your Account
         </h2>
@@ -96,13 +90,25 @@ const Register = () => {
           {/* Favorite Color Field */}
           <div className="relative">
             <input
-              type="password"
+              type="text"
               placeholder="Favorite Color"
               value={favoritecolor}
               onChange={(e) => setFavoritecolor(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none text-gray-800 placeholder-gray-400"
               required
             />
+          </div>
+
+          {/* Role Selection Field */}
+          <div className="relative">
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none text-gray-800"
+            >
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
           </div>
 
           {/* Display Error */}
@@ -135,4 +141,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Register;

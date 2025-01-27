@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
-import { AiOutlineHome, AiOutlineInfoCircle } from "react-icons/ai"; // Home and About icons
-import { MdOutlineMiscellaneousServices } from "react-icons/md"; // Services icon
-import { FaPlus, FaSearch } from "react-icons/fa"; // Add and Search icons
+import { Link } from "react-router-dom";
+import { AiOutlineHome, AiOutlineInfoCircle } from "react-icons/ai";
+import { MdOutlineMiscellaneousServices } from "react-icons/md";
+import { FaSearch } from "react-icons/fa";
 
 const Navbar = ({ onCategoryChange, onFilter, isLoggedIn }) => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -11,28 +11,24 @@ const Navbar = ({ onCategoryChange, onFilter, isLoggedIn }) => {
   const handleCategoryChange = (event) => {
     const category = event.target.value;
     setSelectedCategory(category);
-
     if (onCategoryChange) {
-      onCategoryChange(category); // Call only if the function is provided
+      onCategoryChange(category);
     }
   };
 
   const handleSearch = () => {
     if (onFilter) {
-      onFilter({ searchQuery, selectedCategory }); // Call only if the function is provided
+      onFilter({ searchQuery, selectedCategory });
     }
   };
 
   return (
     <nav className="bg-orange-700 text-orange-100 shadow-lg">
-      <div className="container mx-auto flex flex-wrap items-center justify-between px-6 py-4">
+      <div className="container mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <div className="flex items-center">
           <span className="text-xl font-bold">LocalDial</span>
         </div>
-
-        {/* Spacer */}
-        <div className="flex-grow"></div>
 
         {/* Search Bar */}
         <div className="flex items-center space-x-2">
@@ -66,40 +62,20 @@ const Navbar = ({ onCategoryChange, onFilter, isLoggedIn }) => {
           <option value="Pharmacies">Pharmacies</option>
         </select>
 
-        {/* Spacer */}
-        <div className="ml-6"></div>
-
         {/* Navigation Links */}
         <div className="hidden md:flex items-center space-x-6">
-          <Link
-            to="/home"
-            className="hover:text-orange-200 transition duration-300 no-underline flex items-center"
-          >
+          <Link to="/home" className="hover:text-orange-200 transition duration-300 no-underline flex items-center">
             <AiOutlineHome className="mr-1" /> Home
           </Link>
-          <Link
-            to="/aboutus"
-            className="hover:text-orange-200 transition duration-300 no-underline flex items-center"
-          >
+          <Link to="/aboutus" className="hover:text-orange-200 transition duration-300 no-underline flex items-center">
             <AiOutlineInfoCircle className="mr-1" /> About Us
           </Link>
-          <Link
-            to="/services"
-            className="hover:text-orange-200 transition duration-300 no-underline flex items-center"
-          >
+          <Link to="/services" className="hover:text-orange-200 transition duration-300 no-underline flex items-center">
             <MdOutlineMiscellaneousServices className="mr-1" /> Services
           </Link>
-         
-         {/* Sign Up Button */}
-        <div className="ml-4">
-          <Link
-            to="/register"
-            className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition duration-300 shadow-md no-underline"
-          >
+          <Link to="/register" className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition duration-300 shadow-md no-underline">
             Sign Up
           </Link>
-        </div>
-         
         </div>
       </div>
     </nav>
