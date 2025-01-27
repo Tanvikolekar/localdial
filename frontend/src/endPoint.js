@@ -16,3 +16,4 @@ export const API_PROUDCT_URL = `http://localhost:4000/api/businesses`;
 
 export const API_IMAGE_UPLOAD_URL =`http://localhost:4000/api/img/upload`;
 
+export const API_URL =`http://localhost:4000/api/login`

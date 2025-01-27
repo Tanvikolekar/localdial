@@ -4,6 +4,8 @@ const authRoutes = require("./routes/userRoutes"); // Import the auth routes
 const businessRoutes = require('./routes/businessRoutes');
 const uploadrouter = require("./routes/uploadRoutes.js");
 // const dashboardRoutes = require("./routes/dashboardRoutes");
+// const authMiddleware = require('./middleware/authMiddleware');
+
 const connectDB = require("./config/db");
 require("dotenv").config();
 
@@ -16,6 +18,7 @@ app.use(cors());
 app.use(express.json()); // To parse incoming JSON requests
 
 // app.use("/dashboard", dashboardRoutes);
+// app.use('/api/user', userRoutes); // Use user routes
 
 // MongoDB connection
 connectDB();

@@ -13,31 +13,33 @@ const Login = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!email || !password) {
       setError("All fields are required.");
       return;
     }
-
+  
     try {
       setLoading(true);
       setError("");
-
       const response = await loginUser({ email, password }); // API call to login user
-
+  
       if (response.success) {
+        localStorage.setItem("authToken", response.token);
+
         alert("Login successful!");
-        // Redirect to dashboard or another page
-        // window.location.href = '/dashboard'; // Example redirect
+        localStorage.setItem("authToken", response.token); // Save token
+        window.location.href = "/dashboard"; // Redirect to dashboard
       } else {
         setError(response.message || "Invalid credentials.");
       }
     } catch (err) {
-      setError("Error during login. Please try again.");
+      setError(err.message || "Error during login. Please try again.");
     } finally {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">

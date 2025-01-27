@@ -1,30 +1,12 @@
-// models/User.js
+// backend/models/User.js
+const mongoose = require('mongoose');
 
-const mongoose = require("mongoose");
+const UserSchema = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  role: { type: String, enum: ['user', 'admin'], default: 'user' },
+});
 
-const userSchema = mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-    favoritecolor: {
-      type: String, // Stores the user's answer to the question
-      required: true, // Make this required if necessary
-    },
-  },
-  { timestamps: true }
-);
-
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', UserSchema);
 
 module.exports = User;

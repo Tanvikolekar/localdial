@@ -13,6 +13,9 @@ import Services from "./components/pages/Services";
 import BusinessCard from "./components/layout/BusinessCard";
 // import Dashboard from "./components/pages/dashboard";
 import NavbarAuth from "./components/layout/NavbarAuth";
+import AdminDashboard from "./components/pages/adminPanel";
+import UserDashboard from "./components/pages/dashboard";
+import ProtectedRoute from "./components/pages/protectedRoutes";
 
 const App = () => {
   // State to track user role and authentication status
@@ -45,15 +48,33 @@ const App = () => {
 
         <main className="flex-grow">
           <Routes>
+            <Route path="/protected" element={<ProtectedRoute />} />
+             {/* Protected Routes */}
+             <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <UserDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/home" element={<HomePage />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route
               path="/register"
-              element={<Register  />}
+              element={<Register />}
             />
             <Route
               path="/login"
-              element={<Login  />}
+              element={<Login />}
             />
             <Route path="/resetPassword" element={<ResetPassword />} />
             <Route path="/categories" element={<Categories />} />

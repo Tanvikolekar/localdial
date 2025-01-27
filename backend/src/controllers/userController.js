@@ -286,4 +286,34 @@ const deleteUser = async (req, res) => {
   }
 };
 
+
+
+// Login logic
+exports.loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Check if user exists
+    const user = await User.findOne({ email });
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    // Verify password
+    const isPasswordValid = await verifyPassword(password, user.password); // Assuming you have a helper for password validation
+    if (!isPasswordValid) return res.status(401).json({ message: "Invalid credentials" });
+
+    // Generate a token
+    const token = jwt.sign(
+      { id: user._id, role: user.role }, // Include any data you want in the token
+      process.env.JWT_SECRET,          // Use a strong secret key from .env
+      { expiresIn: "1h" }              // Token expiration time
+    );
+
+    // Send the token as a response
+    res.status(200).json({ token });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong", error: err.message });
+  }
+};
+
+
 module.exports = { registerUser, loginUser, resetPassword, getUsers, updateUser, deleteUser };

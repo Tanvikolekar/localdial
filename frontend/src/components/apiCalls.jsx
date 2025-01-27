@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_PROUDCT_URL, LOGIN_URL, REGISTER_URL, RESET_PASSWORD_URL } from "../endPoint";
+import { API_PROUDCT_URL, LOGIN_URL, REGISTER_URL, RESET_PASSWORD_URL,API_URL } from "../endPoint";
 
 // Axios instance with timeout and default headers
 const axiosInstance = axios.create({
@@ -104,3 +104,10 @@ const handleFileUpload = async (file) => {
 };
 
 
+axiosInstance.interceptors.request.use((config) => {
+  const token = localStorage.getItem("authToken");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+}, (error) => Promise.reject(error));
