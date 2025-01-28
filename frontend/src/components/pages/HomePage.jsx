@@ -13,7 +13,7 @@ const HomePage = () => {
       try {
         const response = await fetch(`/api/businesses?category=${category}`);
         const result = await response.json();
-        setData(result); // Update state with fetched data
+        console.log(text);  // Update state with fetched data
       } catch (error) {
         console.error("Error fetching data:", error);
       }
