@@ -25,6 +25,8 @@ const App = () => {
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     setIsAuthenticated(!!token); // Set true if token exists, false if not
+    const token1 = localStorage.getItem("userRole");
+    setIsAuthenticated(!!token1);
   }, []); 
 
   const handleCategoryChange = (category) => {

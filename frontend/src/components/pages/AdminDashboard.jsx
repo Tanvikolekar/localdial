@@ -33,7 +33,7 @@ const UserDashboard = () => {
             className="mt-3 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
             onClick={handleNavigateToAddForm} // Trigger navigate on button click
           >
-            <IoIosAddCircle />  View Services
+            <IoIosAddCircle />  Add Services
           </button>
         </div>
       </div>
