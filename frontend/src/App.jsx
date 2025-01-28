@@ -18,29 +18,24 @@ import UserDashboard from "./components/pages/dashboard";
 import ProtectedRoute from "./components/pages/protectedRoutes";
 
 const App = () => {
-  // State to track user role and authentication status
-  const [user, setUser] = useState({ isAuthenticated: false, role: null });
+  // State to track user authentication status
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Example useEffect to simulate user data fetching
+  // Check the token in localStorage to determine authentication status
   useEffect(() => {
-    // Simulate a default unauthenticated state on app load
-    setUser({ isAuthenticated: false, role: null });
-  }, []);
+    const token = localStorage.getItem("authToken");
+    setIsAuthenticated(!!token); // Set true if token exists, false if not
+  }, []); 
 
   const handleCategoryChange = (category) => {
     console.log("Selected category:", category);
-  };
-
-  // Handle user login or registration (simulating backend response)
-  const handleAuth = (role) => {
-    setUser({ isAuthenticated: true, role }); // e.g., role could be 'admin' or 'user'
   };
 
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
         {/* Conditionally render Navbar or NavbarAuth */}
-        {user.isAuthenticated ? (
+        {isAuthenticated ? (
           <NavbarAuth onCategoryChange={handleCategoryChange} />
         ) : (
           <Navbar onCategoryChange={handleCategoryChange} />
@@ -68,14 +63,8 @@ const App = () => {
             />
             <Route path="/home" element={<HomePage />} />
             <Route path="/aboutus" element={<AboutUs />} />
-            <Route
-              path="/register"
-              element={<Register />}
-            />
-            <Route
-              path="/login"
-              element={<Login />}
-            />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/resetPassword" element={<ResetPassword />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/addform" element={<AddBusinessForm />} />

@@ -1,6 +1,15 @@
 import React from "react";
+import LogoutButton from "./logOut";
+import { useNavigate } from "react-router-dom";
 
 const UserDashboard = () => {
+  const navigate = useNavigate();
+
+  // Function to navigate to the Add Business Form
+  const handleNavigateToAddForm = () => {
+    navigate("/addform");
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">User Dashboard</h1>
@@ -11,11 +20,18 @@ const UserDashboard = () => {
           <button className="mt-3 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
             Edit Profile
           </button>
+          <br />
+          <button className="mt-3 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
+            <LogoutButton />
+          </button>
         </div>
         <div className="p-4 bg-white shadow-md rounded-lg">
           <h2 className="text-lg font-semibold mb-2">My Services</h2>
           <p>View the services you’ve added.</p>
-          <button className="mt-3 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
+          <button
+            className="mt-3 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+            onClick={handleNavigateToAddForm} // Trigger navigate on button click
+          >
             View Services
           </button>
         </div>
