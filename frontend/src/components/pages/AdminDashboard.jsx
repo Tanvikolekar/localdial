@@ -1,6 +1,7 @@
 import React from "react";
 import LogoutButton from "./logOut";
 import { useNavigate } from "react-router-dom";
+import { IoIosAddCircle } from "react-icons/io";
 
 const UserDashboard = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const UserDashboard = () => {
             className="mt-3 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
             onClick={handleNavigateToAddForm} // Trigger navigate on button click
           >
-            View Services
+            <IoIosAddCircle />  View Services
           </button>
         </div>
       </div>

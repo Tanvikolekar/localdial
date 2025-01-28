@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoIosLogOut } from "react-icons/io";
 
 const LogoutButton = () => {
   const handleLogout = () => {
@@ -9,7 +10,7 @@ const LogoutButton = () => {
 
   return (
     <button onClick={handleLogout} className="logout-button">
-      Logout
+      <IoIosLogOut />  Logout
     </button>
   );
 };

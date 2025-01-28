@@ -1,4 +1,7 @@
 import React from "react";
+import { FaFacebook } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaInstagramSquare } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -45,7 +48,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Facebook
+            <FaFacebook />
           </a>
           <a
             href="https://twitter.com"
@@ -53,7 +56,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Twitter
+            <FaSquareXTwitter />
           </a>
           <a
             href="https://instagram.com"
@@ -61,7 +64,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Instagram
+            <FaInstagramSquare />
           </a>
         </div>
       </div>

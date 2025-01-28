@@ -14,7 +14,7 @@ import BusinessCard from "./components/layout/BusinessCard";
 // import Dashboard from "./components/pages/dashboard";
 import NavbarAuth from "./components/layout/NavbarAuth";
 import AdminDashboard from "./components/pages/adminPanel";
-import UserDashboard from "./components/pages/dashboard";
+import UserDashboard from "./components/pages/Admindashboard";
 import ProtectedRoute from "./components/pages/protectedRoutes";
 
 const App = () => {
