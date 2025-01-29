@@ -2,6 +2,7 @@ import React from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaInstagramSquare } from "react-icons/fa";
+import { IoMdContact } from "react-icons/io";
 
 const Footer = () => {
   return (
@@ -15,28 +16,10 @@ const Footer = () => {
         {/* Navigation Links */}
         <div className="flex space-x-6">
           <a
-            href="/home"
-            className="hover:text-orange-200 transition duration-300"
-          >
-            Home
-          </a>
-          <a
-            href="/aboutus"
-            className="hover:text-orange-200 transition duration-300"
-          >
-            About Us
-          </a>
-          <a
-            href="#services"
-            className="hover:text-orange-200 transition duration-300"
-          >
-            Services
-          </a>
-          <a
             href="/contact"
-            className="hover:text-orange-200 transition duration-300"
+            className="hover:text-orange-200 transition duration-300 no-underline flex items-center"
           >
-            Contact
+              <IoMdContact className="mr-1"/>Contact
           </a>
         </div>
 
